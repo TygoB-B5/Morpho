@@ -2,6 +2,8 @@ namespace Morpho
 {
     public abstract class PlayerController
     {
+        protected Player Parent;
+
         protected PlayerController(Player player)
         {
             Parent = player;
@@ -9,7 +11,6 @@ namespace Morpho
 
         public abstract void StartController();
         public abstract void UpdateController();
-
-        protected Player Parent;
+        public abstract void FixedUpdateController();
     }
 }
