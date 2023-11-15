@@ -1,10 +1,38 @@
-
-using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Morpho
 {
+    public class HapticFeedbackController
+    {
+        // Import the Windows API functions for XInput
+        [DllImport("xinput1_3.dll")]
+        public static extern uint XInputSetState(uint dwUserIndex, ref XINPUT_VIBRATION pVibration);
+
+        // Structure to represent the vibration parameters
+        [StructLayout(LayoutKind.Explicit)]
+        public struct XINPUT_VIBRATION
+        {
+            [FieldOffset(0)] public ushort wLeftMotorSpeed;
+            [FieldOffset(2)] public ushort wRightMotorSpeed;
+        }
+
+        // Player index (controller number)
+        private const uint playerIndex = 0; // Change this based on the player/controller you want to affect
+
+        public static void SetVibration(float percentage)
+        {
+            XINPUT_VIBRATION vibration = new XINPUT_VIBRATION();
+            vibration.wLeftMotorSpeed = (ushort)(percentage * 65535.0f); // Max intensity for left motor
+            vibration.wRightMotorSpeed = (ushort)(percentage * 65535.0f); // Max intensity for right motor
+
+            XInputSetState(playerIndex, ref vibration);
+        }
+    }
+
+
     public class InputController
     {
         private readonly float Deadzone = 0.1f;
@@ -155,6 +183,17 @@ namespace Morpho
 
             return pauseScreen.GetComponent<UIPauseMenu>();
         }
+
+        public static CameraMan GetCameraMan()
+        {
+            if(Camera.main.TryGetComponent<CameraMan>(out CameraMan man))
+            {
+                return man;
+            }
+
+            return Camera.main.AddComponent<CameraMan>();
+        }
+
 
         public static Radio GetRadio() => Instance.GetRadioImpl();
         private Radio GetRadioImpl()

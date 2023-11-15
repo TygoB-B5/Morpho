@@ -69,7 +69,7 @@ fixed4 frag(v2f i) : SV_Target
         return _LineColor;
     }
     
-    float t = pow(sin((i.uv.y * 500 * worldScale.y + i.uv.x * 500 * worldScale.x) / _Scale) - _Thickness, 512);
+    float t = pow(sin((i.uv.y * 500 * worldScale.y + i.uv.x * 500 * worldScale.x - _Time.y * 500) / _Scale) - _Thickness, 512);
     t = clamp(t, 0, 1);
     return lerp(_LineColor + _MainColor * _LineTransparency, _MainColor, t);
 }

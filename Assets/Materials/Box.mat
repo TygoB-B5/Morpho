@@ -42,14 +42,14 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _LineTransparency: 0.63
-    - _OutlineThickness: 0.23
-    - _Scale: 63.83
+    - _LineTransparency: -0.04
+    - _OutlineThickness: 0.3
+    - _Scale: 164.1
     - _Thickness: 0.82
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _LineColor: {r: 1, g: 0.9440995, b: 0.023584902, a: 1}
+    - _LineColor: {r: 0.5849056, g: 0.0744927, b: 0.18777084, a: 1}
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

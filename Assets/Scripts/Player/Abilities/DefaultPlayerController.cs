@@ -12,6 +12,8 @@ namespace Morpho
 
         private float JumpForce = 26.0f;
 
+        private float time;
+
         public DefaultPlayerController(Player player)
             : base(player)
         {
@@ -34,8 +36,17 @@ namespace Morpho
 
             if (canJump)
             {
+                GameManager.GetRadio().PlayJump();
                 Parent.RigidBody.velocity = Vector3.up * JumpForce;
                 Debug.Log("Jump");
+            }
+
+            time += Time.deltaTime * Mathf.Abs(MovementDelta);
+
+            if (time > 0.5f)
+            {
+                time = 0;
+                GameManager.GetRadio().PlayWalk();
             }
         }
 

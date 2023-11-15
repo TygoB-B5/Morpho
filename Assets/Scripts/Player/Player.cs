@@ -22,8 +22,11 @@ namespace Morpho
 
         public void SetController(PlayerController controller)
         {
-            Controller = controller;
-            Controller.StartController();
+            if (controller.GetType() != Controller.GetType())
+            {
+                Controller = controller;
+                Controller.StartController();
+            }
         }
 
         public void Awake()

@@ -10,7 +10,6 @@ public class PersistentSingleton<T> : MonoBehaviour where T : Component
 {
     private static T _instance;
     private static GameObject _obj;
-    private static bool _existedOnInit;
 
     /// <summary>
     /// Singleton design pattern.
@@ -26,13 +25,10 @@ public class PersistentSingleton<T> : MonoBehaviour where T : Component
                 {
                     _instance = FindObjectOfType<T>();
 
-                    _existedOnInit = true;
-
                     if (_instance == null)
                     {
                         GameObject obj = new GameObject(typeof(T).ToString());
                         _instance = obj.AddComponent<T>();
-                        _existedOnInit = false;
                     }
                 }
             }

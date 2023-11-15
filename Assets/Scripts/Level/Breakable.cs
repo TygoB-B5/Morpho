@@ -12,6 +12,7 @@ namespace Morpho
 
                 if (!isTooWeak)
                 {
+                    GameManager.GetRadio().PlayThwomp();
                     Destroy(gameObject);
                 }
             }
