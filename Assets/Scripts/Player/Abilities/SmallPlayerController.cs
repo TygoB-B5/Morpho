@@ -5,7 +5,7 @@ namespace Morpho
     public class SmallPlayerControlller : PlayerController
     {
         private float DefaultScale = 3.0f;
-        private float DefaultSpeed = 7.5f;
+        private float DefaultSpeed = 12.5f;
 
         private float MovementDelta;
         private float MovementSmoothness = 7.5f;

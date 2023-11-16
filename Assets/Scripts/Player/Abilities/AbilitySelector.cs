@@ -17,6 +17,12 @@ namespace Morpho
             {
                 GameManager.Player.SetController(new SmallPlayerControlller(GameManager.Player));
             }
+
+            if (Ability == "HeavyPlayerController")
+            {
+                GameManager.Player.SetController(new HeavyPlayerController(GameManager.Player));
+            }
+
             GameManager.GetCameraMan().SetVignetteColor(GetComponent<SpriteRenderer>().color);
             GameManager.GetRadio().PlayAbilityChange();
         }

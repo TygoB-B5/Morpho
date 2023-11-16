@@ -8,20 +8,26 @@ namespace Morpho
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            GameManager.Player.transform.position += Vector3.up * 0.05f;
+            if (GameManager.Player.Controller.GetType() != typeof(HeavyPlayerController))
+            {
+                GameManager.Player.transform.position += Vector3.up * 0.05f;
+            }
+
         }
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (collision.gameObject == GameManager.Player.gameObject)
+            if (GameManager.Player.Controller.GetType() != typeof(HeavyPlayerController))
             {
-                if(GameManager.Player.RigidBody.velocity.y < 0)
+                if (collision.gameObject == GameManager.Player.gameObject)
                 {
-                    GameManager.Player.RigidBody.velocity = new Vector2(GameManager.Player.RigidBody.velocity.x, 0);
+                    if (GameManager.Player.RigidBody.velocity.y < 0)
+                    {
+                        GameManager.Player.RigidBody.velocity = new Vector2(GameManager.Player.RigidBody.velocity.x, 0);
 
-                    GameManager.Player.transform.position += Vector3.up * GameManager.InputManager.GetMovementInput().y * Speed * Time.deltaTime;
+                        GameManager.Player.transform.position += Vector3.up * GameManager.InputManager.GetMovementInput().y * Speed * Time.deltaTime;
+                    }
                 }
-
             }
         }
     }

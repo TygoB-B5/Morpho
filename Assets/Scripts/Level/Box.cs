@@ -14,9 +14,10 @@ namespace Morpho
         {
             if (collision.gameObject == GameManager.Player.gameObject)
             {
-                bool isTooWeak = GameManager.Player.Controller.GetType() == typeof(SmallPlayerControlller);
+                bool isTooWeak = GameManager.Player.Controller.GetType() == typeof(SmallPlayerControlller) ||
+                    GameManager.Player.Controller.GetType() == typeof(HeavyPlayerController);
 
-                GetComponent<Rigidbody2D>().isKinematic = isTooWeak;
+                GetComponent<Rigidbody2D>().mass = isTooWeak ? 9999999999 : 1;
 
                 if(!isTooWeak)
                 {

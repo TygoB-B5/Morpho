@@ -10,6 +10,7 @@ namespace Morpho
     {
         private Camera cam;
         private Vector3 currentPosition;
+        private bool isShaking;
 
         private void Awake()
         {
@@ -27,7 +28,11 @@ namespace Morpho
 
         public void PlayCameraShake(float intensity, float duration, float hapticStrength = 1)
         {
-            StartCoroutine(CameraShake(intensity, Mathf.Abs(duration), hapticStrength));
+            if(!isShaking)
+            {
+                isShaking = true;
+                StartCoroutine(CameraShake(intensity, Mathf.Abs(duration), hapticStrength));
+            }
         }
 
         private IEnumerator CameraShake(float intensity, float duration, float hapticStrength)
@@ -45,6 +50,7 @@ namespace Morpho
 
             cam.transform.position = currentPosition;
             HapticFeedbackController.SetVibration(0);
+            isShaking = false;
         }
     }
 }
