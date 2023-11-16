@@ -10,7 +10,7 @@ namespace Morpho
         private float MovementDelta;
         private float MovementSmoothness = 7.5f;
 
-        private float JumpForce = 14.0f;
+        private float JumpForce = 16;
 
         private float time;
 

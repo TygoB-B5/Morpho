@@ -17,7 +17,7 @@ namespace Morpho
                 bool isTooWeak = GameManager.Player.Controller.GetType() == typeof(SmallPlayerControlller) ||
                     GameManager.Player.Controller.GetType() == typeof(HeavyPlayerController);
 
-                GetComponent<Rigidbody2D>().mass = isTooWeak ? 9999999999 : 1;
+                GetComponent<Rigidbody2D>().mass = isTooWeak ? 1000 : 1;
 
                 if(!isTooWeak)
                 {

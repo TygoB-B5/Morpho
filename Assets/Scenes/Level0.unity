@@ -2587,6 +2587,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2363847715964902339, guid: 707b8684d8a6c4e4c8d2df5b5d2b3977, type: 3}
+      propertyPath: m_Size.x
+      value: 0.17769876
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363847715964902339, guid: 707b8684d8a6c4e4c8d2df5b5d2b3977, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.47693497
+      objectReference: {fileID: 0}
     - target: {fileID: 2695999421303332070, guid: 707b8684d8a6c4e4c8d2df5b5d2b3977, type: 3}
       propertyPath: m_Name
       value: Button
